@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget
+    id="ciphix.ciphixcheckradioselector.CiphixCheckRadioSelector"
+    pluginWidget="true"
+    needsEntityContext="true"
+    offlineCapable="true"
+    supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd"
+>
+    <name>Ciphix Check Radio Selector</name>
+    <description>Pluggable widget allowing radio or checkboxes to be used to set a reference(set)</description>
+    <icon />
+    <properties>
+        <propertyGroup caption="General">
+            <propertyGroup caption="General">
+                <property key="orientation" type="enumeration" defaultValue="vertical">
+                    <caption>Orientation</caption>
+                    <description />
+                    <enumerationValues>
+                        <enumerationValue key="vertical">Vertical</enumerationValue>
+                        <enumerationValue key="horizontal">Horizontal</enumerationValue>
+                    </enumerationValues>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Data source">
+                <property
+                    key="linkedAssociation"
+                    type="association"
+                    selectableObjects="objectsDatasource"
+                    onChange="onChangeAction"
+                >
+                    <caption>Association</caption>
+                    <description>The reference(set) to display/set</description>
+                    <associationTypes>
+                        <associationType name="Reference" />
+                        <associationType name="ReferenceSet" />
+                    </associationTypes>
+                </property>
+                <property key="objectsDatasource" type="datasource" isList="true">
+                    <caption>Selectable objects</caption>
+                    <description />
+                </property>
+                <property key="assocCaptionType" type="enumeration" defaultValue="attribute">
+                    <caption>Orientation</caption>
+                    <description />
+                    <enumerationValues>
+                        <enumerationValue key="attribute">Attribute</enumerationValue>
+                        <enumerationValue key="template">Expression</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="assocCaptionAttribute" type="attribute" dataSource="objectsDatasource">
+                    <caption>Caption</caption>
+                    <description>TextTemplate for the assoc caption</description>
+                    <attributeTypes>
+                        <attributeType name="String" />
+                    </attributeTypes>
+                </property>
+                <property key="assocCaptionTemplate" type="textTemplate" dataSource="objectsDatasource">
+                    <caption>Caption</caption>
+                    <description>TextTemplate for the assoc caption</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Label">
+                <systemProperty key="Label" />
+            </propertyGroup>
+            <propertyGroup caption="Editability">
+                <systemProperty key="Editability" />
+            </propertyGroup>
+            <propertyGroup caption="Visibility">
+                <systemProperty key="Visibility" />
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Events">
+                <property key="onChangeAction" type="action" required="false">
+                    <caption>On change</caption>
+                    <description />
+                </property>
+            </propertyGroup>
+    </properties>
+</widget>
