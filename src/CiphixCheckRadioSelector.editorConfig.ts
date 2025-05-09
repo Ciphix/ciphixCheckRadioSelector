@@ -109,36 +109,43 @@ export function getProperties(
 export function getPreview(
     values: CiphixCheckRadioSelectorPreviewProps,
     isDarkMode: boolean
-    //version: number[]
+    // version: number[]
 ): PreviewProps {
     const fontColor: string = isDarkMode ? "#6DB1FE" : "#146ff4";
     const svgCircle =
-        '<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="' + fontColor + '" stroke-width="1" /></svg>';
-    const items = [values.linkedAssociation + ': #1',values.linkedAssociation + ': #2', values.linkedAssociation + ': #3'].map(item => {
+        '<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="' +
+        fontColor +
+        '" stroke-width="1" /></svg>';
+    const items = [
+        values.linkedAssociation + ": #1",
+        values.linkedAssociation + ": #2",
+        values.linkedAssociation + ": #3"
+    ].map(item => {
         return {
             type: "RowLayout",
             borders: false,
             columnSize: "grow",
             padding: 6,
-            children: [{
-                type: "Image",
-                document: svgCircle,
-                width: 20
-                }, {
+            children: [
+                {
+                    type: "Image",
+                    document: svgCircle,
+                    width: 20
+                },
+                {
                     type: "Text",
                     fontColor: isDarkMode ? "#6DB1FE" : "#146ff4",
                     content: "[" + item + "]",
                     fontSize: 8
                 }
             ]
-        }
-    }); 
+        };
+    });
 
-    
     // Customize your pluggable widget appearance for Studio Pro.
     return {
         type: "Container",
-        //@ts-ignore
+        // @ts-ignore
         children: items
     };
 }

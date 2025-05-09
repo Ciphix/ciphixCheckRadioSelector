@@ -1,4 +1,4 @@
-import { MouseEvent, ReactElement, createElement} from "react";
+import { MouseEvent, ReactElement, createElement } from "react";
 import { inputTypeEnum, MxOption } from "src/helpers/types";
 
 export interface InputComponentProps {
@@ -6,18 +6,18 @@ export interface InputComponentProps {
     option: MxOption;
     name: string;
     callback: CallableFunction;
-    disabled?: boolean
+    disabled?: boolean;
 }
 
 export function InputComponent({ type, option, name, callback, disabled = false }: InputComponentProps): ReactElement {
-    const id: string = name + '_' + option.index;
+    const id: string = name + "_" + option.index;
 
     const onClickHandler = (e: MouseEvent<HTMLInputElement>): void => {
         e.preventDefault();
-        if (!!!disabled){
+        if (!disabled) {
             callback(option);
         }
-    }
+    };
 
     return (
         <div className={type} onClick={onClickHandler}>
@@ -26,7 +26,7 @@ export function InputComponent({ type, option, name, callback, disabled = false 
                 id={id}
                 name={name}
                 value={option.caption}
-                readOnly={true}
+                readOnly
                 checked={option.isSelected ? true : undefined}
                 disabled={disabled ? true : undefined}
             />

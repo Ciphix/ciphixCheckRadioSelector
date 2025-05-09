@@ -14,7 +14,7 @@ const getOptionList = (
             mxItem: item,
             caption: assocCaption.get(item).value,
             index: i,
-            isSelected: selected?.includes(item) ? true : false
+            isSelected: !!selected?.includes(item)
         })
     );
 };
@@ -50,8 +50,12 @@ export default function useSettings(props: CiphixCheckRadioSelectorContainerProp
 
     // Populate the options list when dataSource items change
     useEffect(() => {
-        if (props.objectsDatasource.items && props.linkedAssociation && notEmptyAndLoaded(props.objectsDatasource, assocCaption)) {
-            console.log('setOptions for: ' + props.id)
+        if (
+            props.objectsDatasource.items &&
+            props.linkedAssociation &&
+            notEmptyAndLoaded(props.objectsDatasource, assocCaption)
+        ) {
+            console.log("setOptions for: " + props.id);
             if (props.linkedAssociation.value === undefined) {
                 setOptions(getOptionList(props.objectsDatasource.items, assocCaption));
             } else {
@@ -69,11 +73,14 @@ export default function useSettings(props: CiphixCheckRadioSelectorContainerProp
             setOptions([]);
         }
     }, [
+        props.id,
+        props.objectsDatasource,
         props.objectsDatasource?.items,
+        props.linkedAssociation,
         props.linkedAssociation.status,
         props.linkedAssociation.value,
         assocCaption
     ]);
 
-    return { inputType: inputType, containerClass: containerClass, optionList: options, isEditable: isEditable };
+    return { inputType, containerClass, optionList: options, isEditable };
 }

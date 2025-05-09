@@ -10,7 +10,7 @@ import useSettings from "./hooks/useSettings";
 export function CiphixCheckRadioSelector(props: CiphixCheckRadioSelectorContainerProps): ReactElement {
     const { inputType, containerClass, optionList, isEditable } = useSettings(props);
 
-    const handleSelection = (option: MxOption) => {
+    const handleSelection = (option: MxOption): void => {
         option.isSelected = !option.isSelected;
 
         if (props.linkedAssociation.type === "Reference") {
@@ -20,10 +20,11 @@ export function CiphixCheckRadioSelector(props: CiphixCheckRadioSelectorContaine
         }
     };
 
-    const renderOptions = () => {
+    const renderOptions = (): ReactElement[] => {
         return optionList.map(option => {
             return (
                 <InputComponent
+                    key={props.id + "_" + option.index}
                     type={inputType}
                     option={option}
                     name={props.id}
