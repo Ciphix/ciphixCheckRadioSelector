@@ -1,24 +1,16 @@
 ## CiphixCheckRadioSelector
-[Pluggable widget allowing radio or checkboxes to be used to set a reference(set)]
+Pluggable widget to set reference(set)s using radio / checkbox input elements.
 
 ## Features
-[feature highlights]
+- Supports both references and reference sets
+- Will automatically render radio buttons for a reference
+- Will automatically render checkboxed for a reference set
 
 ## Usage
-[step by step instructions]
+- Use as an alternative UI for associations with limited amount of options to choose from
 
 ## Demo project
 [link to sandbox]
 
 ## Issues, suggestions and feature requests
-[link to GitHub issues]
-
-## Development and contribution
-
-1. Install NPM package dependencies by using: `npm install`. If you use NPM v7.x.x, which can be checked by executing `npm -v`, execute: `npm install --legacy-peer-deps`.
-1. Run `npm start` to watch for code changes. On every change:
-    - the widget will be bundled;
-    - the bundle will be included in a `dist` folder in the root directory of the project;
-    - the bundle will be included in the `deployment` and `widgets` folder of the Mendix test project.
-
-[specify contribution]
+[link to GitHub issues](https://github.com/Ciphix/ciphixCheckRadioSelector/issues)
