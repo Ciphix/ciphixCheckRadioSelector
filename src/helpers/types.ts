@@ -1,6 +1,7 @@
 import { ObjectItem } from "mendix";
 
 export type inputTypeEnum = "radio" | "checkbox";
+export type displayTypeEnum = "input" | "text";
 
 export interface MxOption {
     readonly mxItem: ObjectItem;
@@ -11,7 +12,8 @@ export interface MxOption {
 
 export interface CiphixSelectorSettings {
     inputType: inputTypeEnum;
-    containerClass: string;
+    displayType?: displayTypeEnum;
+    className?: string;
     optionList: MxOption[];
-    isEditable: boolean;
+    disabled?: boolean;
 }

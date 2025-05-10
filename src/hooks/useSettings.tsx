@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ListExpressionValue, ObjectItem, ValueStatus, ListValue, ListAttributeValue } from "mendix";
 
-import { CiphixSelectorSettings, inputTypeEnum, MxOption } from "src/helpers/types";
+import { CiphixSelectorSettings, inputTypeEnum, displayTypeEnum, MxOption } from "src/helpers/types";
 import { CiphixCheckRadioSelectorContainerProps } from "typings/CiphixCheckRadioSelectorProps";
 
 const getOptionList = (
@@ -33,20 +33,15 @@ const notEmptyAndLoaded = (
 };
 
 export default function useSettings(props: CiphixCheckRadioSelectorContainerProps): CiphixSelectorSettings {
+    const [className, setClassName] = useState<string>();
     const [options, setOptions] = useState<MxOption[]>([]);
-    const [isEditable, setisEditable] = useState<boolean>(false);
+    const [disabled, setDisabled] = useState<boolean>();
+    const [displayType, setDisplayType] = useState<displayTypeEnum>("input");
 
     const inputType: inputTypeEnum = props.linkedAssociation.type === "Reference" ? "radio" : "checkbox";
 
-    const containerClass: string = props.orientation === "horizontal" ? "mx-radiobuttons inline" : "mx-radiobuttons";
-
     const assocCaption: ListExpressionValue<string> | ListAttributeValue<string> =
         props.assocCaptionType === "attribute" ? props.assocCaptionAttribute : props.assocCaptionTemplate;
-
-    // Check if the item is editable
-    useEffect(() => {
-        setisEditable(props.linkedAssociation && !props.linkedAssociation?.readOnly);
-    }, [props.linkedAssociation, props.linkedAssociation?.readOnly]);
 
     // Populate the options list when dataSource items change
     useEffect(() => {
@@ -82,5 +77,22 @@ export default function useSettings(props: CiphixCheckRadioSelectorContainerProp
         assocCaption
     ]);
 
-    return { inputType, containerClass, optionList: options, isEditable };
+    // Check if the item is editable and set className and displayType accordingly
+    useEffect(() => {
+        if (props.linkedAssociation?.readOnly === true && props.readOnlyStle !== "control") {
+            setClassName("form-control-static mx-radiobuttons");
+            setDisplayType("text");
+            setDisabled(undefined);
+        } else {
+            setClassName(props.orientation === "horizontal" ? "mx-radiobuttons inline" : "mx-radiobuttons");
+            setDisplayType("input");
+            if (props.linkedAssociation?.readOnly === true) {
+                setDisabled(true);
+            } else {
+                setDisabled(undefined);
+            }
+        }
+    }, [props.linkedAssociation, props.linkedAssociation?.readOnly, props.readOnlyStle, props.orientation]);
+
+    return { inputType, displayType, className, optionList: options, disabled };
 }

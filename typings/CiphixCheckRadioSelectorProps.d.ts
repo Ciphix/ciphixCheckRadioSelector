@@ -9,6 +9,8 @@ export type OrientationEnum = "vertical" | "horizontal";
 
 export type AssocCaptionTypeEnum = "attribute" | "template";
 
+export type ReadOnlyStleEnum = "control" | "text";
+
 export interface CiphixCheckRadioSelectorContainerProps {
     name: string;
     tabIndex?: number;
@@ -19,6 +21,7 @@ export interface CiphixCheckRadioSelectorContainerProps {
     assocCaptionType: AssocCaptionTypeEnum;
     assocCaptionAttribute: ListAttributeValue<string>;
     assocCaptionTemplate: ListExpressionValue<string>;
+    readOnlyStle: ReadOnlyStleEnum;
 }
 
 export interface CiphixCheckRadioSelectorPreviewProps {
@@ -31,5 +34,6 @@ export interface CiphixCheckRadioSelectorPreviewProps {
     assocCaptionType: AssocCaptionTypeEnum;
     assocCaptionAttribute: string;
     assocCaptionTemplate: string;
+    readOnlyStle: ReadOnlyStleEnum;
     onChangeAction: {} | null;
 }

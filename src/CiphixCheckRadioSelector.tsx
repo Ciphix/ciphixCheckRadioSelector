@@ -6,9 +6,10 @@ import { CiphixCheckRadioSelectorContainerProps } from "../typings/CiphixCheckRa
 import "./ui/CiphixCheckRadioSelector.css";
 import { InputComponent } from "./components/InputComponent";
 import useSettings from "./hooks/useSettings";
+import { TextComponent } from "./components/TextComponent";
 
 export function CiphixCheckRadioSelector(props: CiphixCheckRadioSelectorContainerProps): ReactElement {
-    const { inputType, containerClass, optionList, isEditable } = useSettings(props);
+    const { inputType, className, optionList, disabled, displayType } = useSettings(props);
 
     const handleSelection = (option: MxOption): void => {
         option.isSelected = !option.isSelected;
@@ -29,16 +30,25 @@ export function CiphixCheckRadioSelector(props: CiphixCheckRadioSelectorContaine
                     option={option}
                     name={props.id}
                     callback={handleSelection}
-                    disabled={!isEditable}
+                    disabled={disabled}
                 ></InputComponent>
             );
         });
     };
 
+    const renderText = (): ReactElement => {
+        return (
+            <TextComponent
+                name={props.id}
+                optionList={optionList.filter(option => option.isSelected).map(option => option.caption)}
+            ></TextComponent>
+        );
+    };
+
     return (
-        <div className={containerClass}>
+        <div className={className}>
             <div role={inputType === "radio" ? "radiogroup" : "group"} id={props.id} className="mx-radiogroup">
-                {renderOptions()}
+                {displayType === "input" ? renderOptions() : renderText()}
             </div>
         </div>
     );
