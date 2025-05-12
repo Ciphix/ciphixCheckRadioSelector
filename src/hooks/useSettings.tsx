@@ -32,6 +32,11 @@ const notEmptyAndLoaded = (
     return false;
 };
 
+const getClassName = (classString: string | undefined): string => {
+    const baseClass = "CiphixCheckRadioSelector mx-radiobuttons";
+    return classString ? baseClass + " " + classString : baseClass;
+};
+
 export default function useSettings(props: CiphixCheckRadioSelectorContainerProps): CiphixSelectorSettings {
     const [className, setClassName] = useState<string>();
     const [options, setOptions] = useState<MxOption[]>([]);
@@ -80,11 +85,11 @@ export default function useSettings(props: CiphixCheckRadioSelectorContainerProp
     // Check if the item is editable and set className and displayType accordingly
     useEffect(() => {
         if (props.linkedAssociation?.readOnly === true && props.readOnlyStle !== "control") {
-            setClassName("form-control-static mx-radiobuttons");
+            setClassName(getClassName("form-control-static"));
             setDisplayType("text");
             setDisabled(undefined);
         } else {
-            setClassName(props.orientation === "horizontal" ? "mx-radiobuttons inline" : "mx-radiobuttons");
+            setClassName(props.orientation === "horizontal" ? getClassName("inline") : getClassName(undefined));
             setDisplayType("input");
             if (props.linkedAssociation?.readOnly === true) {
                 setDisabled(true);

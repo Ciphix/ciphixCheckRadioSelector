@@ -1,6 +1,6 @@
 /*
 Place your custom CSS here
 */
-.widget-hello-world {
-
+.CiphixCheckRadioSelector.mx-radiobuttons.inline .mx-radiogroup .checkbox {
+    margin: 0 20px 0 0;
 }
