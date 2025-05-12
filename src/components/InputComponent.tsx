@@ -27,7 +27,7 @@ export function InputComponent({ type, option, name, callback, disabled = false 
                 name={name}
                 value={option.caption}
                 readOnly
-                checked={option.isSelected ? true : undefined}
+                checked={option.isSelected}
                 disabled={disabled}
             />
             <label htmlFor={id}>{option.caption}</label>

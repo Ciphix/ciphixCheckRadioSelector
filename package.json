@@ -1,7 +1,7 @@
 {
   "name": "ciphixcheckradioselector",
   "widgetName": "CiphixCheckRadioSelector",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Pluggable widget allowing radio or checkboxes to be used to set a reference(set)",
   "copyright": "© 2024 Ciphix IO",
   "author": "Jelle Dekker",
