@@ -7,10 +7,7 @@ Pluggable widget to set reference(set)s using radio / checkbox input elements.
 - Will automatically render checkboxed for a reference set
 
 ## Usage
-- Use as an alternative UI for associations with limited amount of options to choose from
-
-## Demo project
-[link to sandbox]
+- Use as an alternative UI for ComboBoxes when the amount of options the user can choose from is limited (all options displayed at once)
 
 ## Issues, suggestions and feature requests
 [link to GitHub issues](https://github.com/Ciphix/ciphixCheckRadioSelector/issues)
